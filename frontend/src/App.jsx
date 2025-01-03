@@ -9,15 +9,19 @@ import CaptainRegister from "./pages/CaptainRegister";
 import CaptainLogin from "./pages/CaptainLogin";
 import CaptainHome from "./pages/CaptainHome";
 import CaptainProtectedWrapper from "./components/CaptainProtectedWrapper";
+import UserHome from "./pages/UserHome";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
       <Route
-        path="/"
+        path="/home"
         element={
           <UserProtectedWrapper>
-            <Home />
+            <UserHome />
           </UserProtectedWrapper>
         }
       />

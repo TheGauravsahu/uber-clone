@@ -49,9 +49,9 @@ const CaptainRegister = () => {
     setLastName("");
     setPassword("");
     setCapacity();
-    setColor("")
-    setVehicleType("")
-    setPlate("")
+    setColor("");
+    setVehicleType("");
+    setPlate("");
     setShowPassword(false);
   };
 
@@ -82,7 +82,8 @@ const CaptainRegister = () => {
                 setFirstName(e.target.value);
               }}
               type="text"
-              className="w-full mt-1 p-1 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-base"
+              placeholder="first name"
+              className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>
@@ -96,38 +97,41 @@ const CaptainRegister = () => {
                 setLastName(e.target.value);
               }}
               type="text"
-              className="w-full mt-1 py-2 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="last name"
+              className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
         </div>
 
         <div className=" w-full">
-          <label className="block text-sm font-medium text-gray-700">
-            Email
+          <label className="block  font-medium text-gray-700">
+            What's your Email
           </label>
           <input
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
+            placeholder="email"
             type="email"
-            className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">
-            Password
+          <label className="block font-medium text-gray-700">
+            Enter Password
           </label>
-          <div className="flex items-center justify-center border border-gray-300 rounded-md px-3">
+          <div className="flex items-center justify-center bg-gray-50 rounded-md px-3">
             <input
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              placeholder="password"
               type={showPassword ? "text" : "password"}
-              className="mt-1 w-full  py-2  rounded-md focus:outline-none "
+              className="mt-1 w-full  py-2  rounded-md focus:outline-none bg-gray-50"
               required
             />
             <span
@@ -158,7 +162,8 @@ const CaptainRegister = () => {
                 setColor(e.target.value);
               }}
               type="text"
-              className="w-full mt-1 p-1 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-base"
+              placeholder="color"
+              className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               required
             />
           </div>
@@ -172,7 +177,9 @@ const CaptainRegister = () => {
                 setCapacity(e.target.value);
               }}
               type="number"
-              className="w-full mt-1 py-2 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="capacity"
+              required
+              className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
         </div>
@@ -187,7 +194,8 @@ const CaptainRegister = () => {
               setPlate(e.target.value);
             }}
             type="text"
-            className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 w-full px-3 py-2 bg-gray-50 placeholder:text-base rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+            placeholder="plate"
             required
           />
         </div>
@@ -201,7 +209,7 @@ const CaptainRegister = () => {
             onChange={(e) => {
               setVehicleType(e.target.value);
             }}
-            className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="mt-1 w-full px-3 py-2 bg-gray-50 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
             required
           >
             <option value="">Select Vehicle Type</option>
