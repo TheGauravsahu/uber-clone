@@ -15,12 +15,12 @@ const UserHome = () => {
           <div className="w-full relative">
             <div className="h-16 w-1 bg-black rounded-full absolute left-4 top-1/2 -translate-y-[50%]"/>
             <input
-              className="w-full placeholder:text-base placeholder:text-lg bg-zinc-200 px-8 py-2 mt-2 outline-none rounded-md"
+              className="w-full placeholder:text-lg bg-zinc-200 px-8 py-2 mt-2 outline-none rounded-md"
               placeholder="Add a pickup location"
               type="text"
             />
             <input
-              className="w-full placeholder:text-base placeholder:text-lg bg-zinc-200 px-8 py-2 mt-2 outline-none rounded-md"
+              className="w-full placeholder:text-lg bg-zinc-200 px-8 py-2 mt-2 outline-none rounded-md"
               placeholder="Enter your destination"
               type="text"
             />
