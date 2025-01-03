@@ -27,8 +27,11 @@ export const registerUser = async (req, res) => {
   });
 
   const token = user.generateJWT();
+  const userResponse = user.toObject();
 
-  res.status(201).json({ token, user });
+  delete userResponse.password;
+
+  return res.status(201).json({ token, user: userResponse });
 };
 
 export const loginUser = async (req, res) => {

@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import UserRegister from "./pages/UserRegister";
+import UserProtectedWrapper from "./components/UserProtectedWrapper";
 
 const App = () => {
   return (
-    <div>
-      <h1 className='font-semibold text-2xl'>Uber clone</h1>
-    </div>
-  )
-}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <UserProtectedWrapper>
+            <Home />
+          </UserProtectedWrapper>
+        }
+      />
+      <Route path="/register" element={<UserRegister />} />
+    </Routes>
+  );
+};
 
-export default App
+export default App;
