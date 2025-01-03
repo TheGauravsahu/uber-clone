@@ -9,9 +9,8 @@ const CaptainLogin = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate();
-
   const { captain, setCaptain } = useContext(CaptainDataContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,9 +22,10 @@ const CaptainLogin = () => {
     const res = await axios.post("/api/captains/login", captainData);
     if (res.status === 200) {
       const data = res.data;
+
       setCaptain(data.captain);
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/captain-home");
     }
 
     setEmail("");

@@ -77,7 +77,7 @@ export const loginCaptain = async (req, res) => {
 };
 
 export const getCaptainProfile = async (req, res) => {
-  return res.status(200).json(req.captain);
+  res.status(200).json({ captain: req.captain });
 };
 
 export const logoutCaptain = async (req, res) => {

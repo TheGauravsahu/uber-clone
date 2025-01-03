@@ -41,13 +41,17 @@ const CaptainRegister = () => {
       const data = res.data;
       setCaptain(data.captain);
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/captain-home");
     }
 
     setEmail("");
     setFirstName("");
     setLastName("");
     setPassword("");
+    setCapacity();
+    setColor("")
+    setVehicleType("")
+    setPlate("")
     setShowPassword(false);
   };
 

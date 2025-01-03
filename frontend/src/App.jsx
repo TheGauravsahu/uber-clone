@@ -27,7 +27,7 @@ const App = () => {
 
       {/* captain-routes */}
       <Route
-        path="/home"
+        path="/captain-home"
         element={
           <CaptainProtectedWrapper>
             <CaptainHome />
