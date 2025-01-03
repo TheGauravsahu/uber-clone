@@ -4,9 +4,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserDataContext } from "../context/UserContext";
 
-const UserRegister = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -18,16 +16,12 @@ const UserRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = {
-      name: {
-        firstName,
-        lastName,
-      },
       email,
       password,
     };
 
-    const res = await axios.post("/api/users/register", userData);
-    if (res.status === 201) {
+    const res = await axios.post("/api/users/login", userData);
+    if (res.status === 200) {
       const data = res.data;
       setUser(data.user);
       localStorage.setItem("token", data.token);
@@ -35,10 +29,7 @@ const UserRegister = () => {
     }
 
     setEmail("");
-    setFirstName("");
-    setLastName("");
     setPassword("");
-    setShowPassword(false);
   };
 
   return (
@@ -57,36 +48,6 @@ const UserRegister = () => {
           handleSubmit(e);
         }}
       >
-        <div className="flex gap-2">
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              First Name
-            </label>
-            <input
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-              type="text"
-              className="w-full mt-1 p-1 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 placeholder:text-base"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Last Name
-            </label>
-            <input
-              value={lastName}
-              onChange={(e) => {
-                setLastName(e.target.value);
-              }}
-              type="text"
-              className="w-full mt-1 py-2 p-1 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
         <div className=" w-full">
           <label className="block text-sm font-medium text-gray-700">
             Email
@@ -121,10 +82,7 @@ const UserRegister = () => {
               }}
             >
               {showPassword ? (
-                <i
-                  className="ri-eye-close-line"
-                  style={{ fontSize: "20px" }}
-                ></i>
+                <i className="ri-eye-close-line" style={{ fontSize: "20px" }}></i>
               ) : (
                 <i className="ri-eye-line"></i>
               )}
@@ -135,18 +93,18 @@ const UserRegister = () => {
           type="submit"
           className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors"
         >
-          Sign Up
+          Login
         </button>
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-600">
-        Already have an account?{" "}
-        <Link to="/login" className="text-blue-500 hover:text-blue-600">
-          Log in
+        Don't have an account?{" "}
+        <Link to="/register" className="text-blue-500 hover:text-blue-600">
+          Register
         </Link>
       </p>
     </div>
   );
 };
 
-export default UserRegister;
+export default UserLogin;

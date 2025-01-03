@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import UserRegister from "./pages/UserRegister";
 import UserProtectedWrapper from "./components/UserProtectedWrapper";
+import UserLogin from "./pages/UserLogin";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         }
       />
       <Route path="/register" element={<UserRegister />} />
+      <Route path="/login" element={<UserLogin />} />
     </Routes>
   );
 };
