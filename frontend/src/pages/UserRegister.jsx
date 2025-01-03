@@ -31,7 +31,7 @@ const UserRegister = () => {
       const data = res.data;
       setUser(data.user);
       localStorage.setItem("token", data.token);
-      navigate("/");
+      navigate("/home");
     }
 
     setEmail("");
