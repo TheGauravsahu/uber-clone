@@ -36,7 +36,7 @@ export const registerCaptain = async (req, res) => {
 
   delete captainResponse.password;
 
-  return res.status(200).json({ token, captain: captainResponse });
+  return res.status(201).json({ token, captain: captainResponse });
 };
 
 export const loginCaptain = async (req, res) => {

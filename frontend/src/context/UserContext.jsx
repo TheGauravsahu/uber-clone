@@ -3,8 +3,6 @@ import React, { createContext, useState } from "react";
 export const UserDataContext = createContext();
 
 const UserContext = ({ children }) => {
-
-
   const [user, setUser] = useState({
     email: "",
     name: {
@@ -12,7 +10,6 @@ const UserContext = ({ children }) => {
       lastName: "",
     },
   });
-
 
   return (
     <>
