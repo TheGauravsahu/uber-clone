@@ -18,11 +18,13 @@ export const authUser = async (req, res, next) => {
 
   try {
     const decoded = jwt.decode(token, process.env.JWT_SECRET);
-    const user = await userModel.findById(decoded._id);
+    if (decoded.role !== "user") {
+      return res.status(403).json({ message: "Access denied" });
+    }
 
-    req.user = user;
+    req.user = await userModel.findById(decoded._id);
 
-    return next();
+    next();
   } catch (error) {
     console.log(error);
     return res.status(401).json({ message: "Unauthorized" });
@@ -44,11 +46,13 @@ export const authCaptain = async (req, res, next) => {
 
   try {
     const decoded = jwt.decode(token, process.env.JWT_SECRET);
-    const captain = await captainModel.findById(decoded._id);
+    if (decoded.role !== "captain") {
+      return res.status(403).json({ message: "Access denied" });
+    }
 
-    req.captain = captain;
+    req.captain = await captainModel.findById(decoded._id);
 
-    return next();
+    next();
   } catch (error) {
     console.log(error);
     return res.status(401).json({ message: "Unauthorized", error });

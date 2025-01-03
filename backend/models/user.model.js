@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     select: false,
   },
+  role: {
+    type: String,
+    enum: ["user"],
+    default: "user",
+  },
 });
 
 userSchema.statics.hashPassword = async function (password) {
@@ -37,9 +42,13 @@ userSchema.methods.comparePassword = async function (password) {
 };
 
 userSchema.methods.generateJWT = function () {
-  const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: "24h",
-  });
+  const token = jwt.sign(
+    { _id: this._id, role: this.role },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "24h",
+    }
+  );
 
   return token;
 };

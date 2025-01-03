@@ -19,8 +19,12 @@ const CaptainProtectedWrapper = ({ children }) => {
       .get("/api/captains/profile")
       .then((response) => {
         if (response.status === 200) {
-          const data = response.data;
-          setCaptain(data.captain);
+          const captainData = response.data.captain;
+          if (captainData.role !== "captain") {
+            navigate("/captain-login");
+            return;
+          }
+          setCaptain(captainData);
           setIsLoading(false);
         }
       })

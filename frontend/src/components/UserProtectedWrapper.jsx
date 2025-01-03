@@ -18,7 +18,12 @@ const UserProtectedWrapper = ({ children }) => {
       .get("/api/users/profile")
       .then((response) => {
         if (response.status === 200) {
-          setUser(response.data);
+          const userData = response.data;
+          if (userData.role !== "user") {
+            navigate("/login");
+            return;
+          }
+          setUser(userData);
           setIsLoading(false);
         }
       })

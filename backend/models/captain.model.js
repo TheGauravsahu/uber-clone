@@ -57,6 +57,11 @@ const captainSchema = new mongoose.Schema({
       enum: ["car", "motorcycle", "auto"],
     },
   },
+  role: {
+    type: String,
+    enum: ["captain"],
+    default: "captain",
+  },
 });
 
 captainSchema.statics.hashPassword = async function (password) {
@@ -68,9 +73,13 @@ captainSchema.methods.comparePassword = async function (password) {
 };
 
 captainSchema.methods.generateJWT = function () {
-  const token = jwt.sign({ _id: this._id }, process.env.JWT_SECRET, {
-    expiresIn: "24h",
-  });
+  const token = jwt.sign(
+    { _id: this._id, role: this.role },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "24h",
+    }
+  );
 
   return token;
 };
