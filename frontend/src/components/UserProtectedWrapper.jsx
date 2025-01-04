@@ -15,7 +15,11 @@ const UserProtectedWrapper = ({ children }) => {
     }
 
     axios
-      .get("/api/users/profile")
+      .get("/api/users/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           const userData = response.data;

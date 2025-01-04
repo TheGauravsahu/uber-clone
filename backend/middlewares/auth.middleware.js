@@ -17,7 +17,7 @@ export const authUser = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.decode(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (decoded.role !== "user") {
       return res.status(403).json({ message: "Access denied" });
     }
@@ -45,7 +45,7 @@ export const authCaptain = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.decode(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (decoded.role !== "captain") {
       return res.status(403).json({ message: "Access denied" });
     }

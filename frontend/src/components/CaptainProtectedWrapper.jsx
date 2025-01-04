@@ -16,10 +16,15 @@ const CaptainProtectedWrapper = ({ children }) => {
     }
 
     axios
-      .get("/api/captains/profile")
+      .get("/api/captains/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         if (response.status === 200) {
           const captainData = response.data.captain;
+
           if (captainData.role !== "captain") {
             navigate("/captain-login");
             return;
